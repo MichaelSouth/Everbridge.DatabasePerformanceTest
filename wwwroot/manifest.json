@@ -1,0 +1,16 @@
+{
+  "name": "Everbridge Database Performance Test",
+  "short_name": "EB Database Performance Test",
+  "start_url": "index.htm",
+  "display": "standalone",
+  "background_color": "#1e1e1e",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "516x516"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+textarea {
+    color: #ffffff;
+    background-color: #1e1e1e;
+}
+
+h1 {   
+    font-family: "Times New Roman", Times, serif;
+    font-size: 70px;
+    margin: 20px;
+    text-shadow: 3px 3px #777777;
+    filter: blur(1px);
+}
+
+button {
+    background-color: #1e1e1e;
+    border: solid gray 2px;
+    padding: 10px;
+    color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    position: relative;
+    float: left;
+}
+
+#shaderEditor {
+    display: none;
+    position: relative;
+}
+
+#shaderEditorToolbar {
+    position: relative;
+    float: initial;
+}
+
+#shaderPreview {
+    position: relative;
+    float: initial;
+}
+
+#editorCanvas {
+}
+
+#shaderSourceCodeTextArea {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0;
+    opacity: 0.5;
+}
