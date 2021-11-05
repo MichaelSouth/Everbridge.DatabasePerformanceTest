@@ -2,40 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="Description" content="A site for viewing and editing WebGL shaders">
+    <meta name="Description" content="Everbridge Database Performance Test<">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1e1e1e" />
-    <title>Shader Gallery</title>
-    <link rel="manifest" href="manifest.json" />
+    <title>Everbridge Database Performance Test</title>
+   <!-- <link rel="manifest" href="manifest.json" />-->
     <link rel="stylesheet" href="style.css">
 
-    <script src="render.js" type="text/javascript" defer="defer"></script>
-
+    <!--<script src="render.js" type="text/javascript" defer="defer"></script>-->
     <script src="main.js" type="text/javascript" defer="defer"></script>
+
 </head>
 <body>
-        <noscript>
-            <div style="position: fixed; top: 0px; left: 0px; z-index: 3000; height: 100%; width: 100%; ">
-                <p style="margin-left: 10px">JavaScript is not enabled.</p>
-            </div>
-        </noscript>
-        <main class="mainPanel">
-            <a href="index.htm"><h1>Everbridge Database Performance Testy</h1></a>
+    <noscript>
+        <div style="position: fixed; top: 0px; left: 0px; z-index: 3000; height: 100%; width: 100%; ">
+            <p style="margin-left: 10px">JavaScript is not enabled.</p>
+        </div>
+    </noscript>
 
-            <ul id="shaderList"></ul>
+    <header>
+        <h1>Everbridge</h1>
+        <h2>Database Performance Test</h2>
+    </header>
 
-            <div id="shaderEditor">
-                <div id="shaderEditorToolbar">
-                    <button type="button" id="compileButton">Compile</button>
-                    <button type="button" id="saveButton">Save</button>
-                    <button type="button" id="fullScreenButton">Full Screen</button>
-                    <button type="button" id="shaderGalleryButton">Gallery</button>
-                </div>
-                <div id="shaderPreview">
-                    <canvas id="editorCanvas" width="900" height="600"></canvas>
-                    <textarea id="shaderSourceCodeTextArea" rows="20"></textarea>
-                </div>
-            </div>
-        </main>
+    <main class="mainPanel">
+        <form name="sampleForm" action="#" method="POST" autocomplete="off">
+            <p>
+                <label for="dbProvider">Database Provider</label>
+                <select id="dbProvider" autocomplete="off" >
+                    <option value="">Choose a database</option>
+                    <option selected="selected" value="mongo">Mongo</option>
+                    <option value="sql">Micrososft SQL Server</option>
+                </select>
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
+                <label for="data">Data</label>
+                <textarea id="data"
+                          name="data"
+                          required >
+                    some data
+                </textarea>
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
+                <label for="iterationCount">Iteration Count</label>
+                <input type="number"
+                       inputmode="numeric"
+                       id="iterationCount"
+                       name="iterationCount"
+                       enterkeyhint="next"
+                       autocomplete="off"
+                       value="100"
+                       min="0"
+                       max="50"
+                       step="2" />
+
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
+                <label for="operation">Operation</label>
+                <select id="operation" autocomplete="off">
+                    <option value="">Choose a operation</option>
+                    <option selected="selected" value="write">Write</option>
+                    <option value="read">Read</option>
+                </select>
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
+                <button id="btnStartTask" onclick="StartTaskClick()">Start Task</button>
+            </p>
+        </form>
+            
+    </main>
 </body>
 </html>

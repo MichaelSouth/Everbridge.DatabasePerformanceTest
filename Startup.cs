@@ -1,3 +1,4 @@
+using Everbridge.DatabasePerformanceTest.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,10 @@ namespace Everbridge.DatabasePerformanceTest
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Everbridge.DatabasePerformanceTest", Version = "v1" });
             });
+
+            services.AddScoped<SqlRepository>();
+            services.AddScoped<MongoRepository>();
+            services.AddScoped<IDatabasePerformanceRepositoryFactory, DatabasePerformanceRepositoryFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
