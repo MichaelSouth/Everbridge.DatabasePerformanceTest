@@ -1,1 +1,10 @@
 ﻿Pass db provider as enum.
+Electron app
+read test
+black grid https://gridjs.io/docs/examples/hello-world
+format date time
+Animated background ?
+
+SQL repository
+redis 
+elasticache

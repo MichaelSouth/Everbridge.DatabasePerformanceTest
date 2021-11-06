@@ -24,14 +24,25 @@ header {
 
 h1 {
     color: orange;
+    display: inline;
 }
 
 h2 {
     color: orangered;
+    display: inline;
+}
+
+h3 {
+    padding: 0rem 2rem;
+    color: white;
 }
 
 form {
+    margin: 0.025rem 2rem;
+    padding: 1rem 0rem;
     max-width: 600px;
+    border-radius: 20px;
+    background-color: #444;
 }
 
     form > p {
@@ -81,6 +92,19 @@ label {
     color: inherit;
     text-shadow: inherit;
 }
+
+textarea {
+    font-size: 1.2rem;
+    flex-basis: 30%;
+    padding: 0.25rem 1px;
+    text-align: start;
+    /* in cooperation with form p:focus-within */
+    color: inherit;
+    text-shadow: inherit;
+    width: calc(100% - 2px);
+    height: 150px;
+}
+
 
 input {
     font-size: 1.2rem;
@@ -178,4 +202,16 @@ input:invalid {
 :out-of-range {
     /* value too short, too long, too small or too big */
     border-right: 2rem solid black;
+}
+
+#results {
+    margin: 1.5rem 2rem;
+    padding: 0.25rem 0rem;
+    border-radius: 20px;
+    background-color: #444;
+    max-width: 1000px;
+}
+
+#grid {
+    padding: 0.25rem 2rem;
 }
