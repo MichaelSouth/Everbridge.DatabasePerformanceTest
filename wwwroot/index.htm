@@ -27,7 +27,7 @@
     </header>
 
     <main class="mainPanel">
-        <form>
+        <form >
             <h3>Create Task</h3>
             <p>
                 <label for="dbProvider">Database Provider</label>
@@ -90,7 +90,9 @@
             </p>
 
             <p>
-                <button id="btnStartTask" onclick="StartTaskClick()">Start Task</button>
+                <!-- Switched to input type button so the form is not reset -->
+                <!--   <button id="btnStartTask" type="submit" onclick="StartTaskClick()">Start Task</button>-->
+                <input type="button" id="btnStartTask" onclick="StartTaskClick()" value="Start Task" />
             </p>
         </form>
 
