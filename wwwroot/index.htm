@@ -27,7 +27,7 @@
     </header>
 
     <main class="mainPanel">
-        <form >
+        <form>
             <h3>Create Task</h3>
             <p>
                 <label for="dbProvider">Database Provider</label>
@@ -82,6 +82,22 @@
                        enterkeyhint="next"
                        autocomplete="off"
                        value="100"
+                       min="1"
+                       max="50000000000000"
+                       step="1" />
+
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
+                <label for="threadCount">Thread Count</label>
+                <input type="number"
+                       inputmode="numeric"
+                       id="threadCount"
+                       name="threadCount"
+                       enterkeyhint="next"
+                       autocomplete="off"
+                       value="1"
                        min="1"
                        max="50000000000000"
                        step="1" />
