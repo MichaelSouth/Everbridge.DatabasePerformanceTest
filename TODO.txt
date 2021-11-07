@@ -4,7 +4,6 @@ read test
 black grid https://gridjs.io/docs/examples/hello-world
 Animated background ?
 
-SQL repository
 redis 
 elasticache
 

@@ -4,15 +4,17 @@ function StartTaskClick() {
     console.log("StartTaskClick");
     const textAreaElement = document.getElementById('data') as HTMLTextAreaElement;
     const iterationCountInputElement = document.getElementById('iterationCount') as HTMLInputElement;
+    const threadCountInputElement = document.getElementById('threadCount') as HTMLInputElement;
     const dbProviderSelectElement = document.getElementById('dbProvider') as HTMLSelectElement;
     const operationSelectElement = document.getElementById('operation') as HTMLSelectElement;
-
+    
     var task = {
         TaskIdentifier: this.GenerateIdentifier(),
         Data: textAreaElement.value,
         IterationCount: iterationCountInputElement.value,
         DatabaseProvider: dbProviderSelectElement.value,
-        Operation: operationSelectElement.value
+        Operation: operationSelectElement.value,
+        threadCount: threadCountInputElement.value
     };
 
     const response = fetch('DatabasePerformance', {
@@ -55,6 +57,10 @@ function renderGrid() {
                 name: "Iteration",
                 width: '10%'
         }, {
+                id: 'threadCount',
+                name: "Threads",
+                width: '10%'
+         }, {
             id: 'startTime',
             name: "Start Time",
             width: '10%',
