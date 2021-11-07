@@ -41,6 +41,7 @@ namespace Everbridge.DatabasePerformanceTest.Controllers
                 repository.ExecuteTask(task);
                 task.EndTime = DateTime.UtcNow;
                 var executionTime = task.EndTime.Subtract(task.StartTime);
+                task.ExecutionTime = (long)executionTime.TotalMilliseconds;
                 _logger.LogInformation($"End database performance task: {task.TaskIdentifier}: Execution time {executionTime.TotalMilliseconds}ms");
             });
 

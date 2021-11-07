@@ -67,6 +67,13 @@ function renderGrid() {
                     const timeString = tempDate.toLocaleTimeString('en-US');
                     return `${timeString}`;
                 }
+            }, {
+                id: 'executionTime',
+                name: "Execution Time",
+                width: '10%',
+                formatter: (cell) => {
+                    return `${cell}ms`;
+                }
             }],
         sort: true,
         data: []

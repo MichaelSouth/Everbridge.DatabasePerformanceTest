@@ -63,7 +63,7 @@ function renderGrid() {
                 const timeString = tempDate.toLocaleTimeString('en-US');
                 return `${timeString}`
             }
-            }, {
+        }, {
                 id: 'endTime',
                 name: "End Time",
                 width: '10%',
@@ -72,7 +72,14 @@ function renderGrid() {
                     const timeString = tempDate.toLocaleTimeString('en-US');
                     return `${timeString}`
                 }
-            }],
+            }, {
+                id: 'executionTime',
+                name: "Execution Time",
+                width: '10%',
+                formatter: (cell) => {
+                    return `${cell}ms`
+                }
+                }],
         sort: true,
         data: []
     }).render(document.getElementById("grid"));

@@ -40,6 +40,16 @@
             </p>
 
             <p>
+                <label for="operation">Operation</label>
+                <select id="operation" autocomplete="off">
+                    <option value="">Choose a operation</option>
+                    <option selected="selected" value="write">Write</option>
+                    <option value="read">Read</option>
+                </select>
+                <span class="instructions"><span class="errMessage"></span></span>
+            </p>
+
+            <p>
                 <label for="data">Data</label>
                 <textarea id="data"
                           name="data"
@@ -76,16 +86,6 @@
                        max="50000000000000"
                        step="1" />
 
-                <span class="instructions"><span class="errMessage"></span></span>
-            </p>
-
-            <p>
-                <label for="operation">Operation</label>
-                <select id="operation" autocomplete="off">
-                    <option value="">Choose a operation</option>
-                    <option selected="selected" value="write">Write</option>
-                    <option value="read">Read</option>
-                </select>
                 <span class="instructions"><span class="errMessage"></span></span>
             </p>
 

@@ -99,7 +99,7 @@ textarea {
     padding: 0.25rem 1px;
     text-align: start;
     /* in cooperation with form p:focus-within */
-    color: inherit;
+    color: black;
     text-shadow: inherit;
     width: calc(100% - 2px);
     height: 150px;
