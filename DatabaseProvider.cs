@@ -3,6 +3,7 @@
     public enum DatabaseProvider
     {
         sql,
-        mongo
+        mongo,
+        elasticsearch
     }
 }

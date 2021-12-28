@@ -35,6 +35,7 @@
                     <option value="">Choose a database</option>
                     <option selected="selected" value="mongo">Mongo</option>
                     <option value="sql">Micrososft SQL Server</option>
+                    <option value="elasticsearch">Elasticsearch</option>
                 </select>
                 <span class="instructions"><span class="errMessage"></span></span>
             </p>
@@ -113,7 +114,14 @@
         </form>
 
         <div id="results">
-            <h3>Task Results</h3>
+            <p>
+                <h3>Task Results</h3>
+                <input type="button"
+                       id="clearResultsButton"
+                       name="clearResultsButton"
+                       value="Clear"
+                       onclick="clearResultsClick()" />
+            </p>
             <div id="grid"></div>
         </div>
     </main>

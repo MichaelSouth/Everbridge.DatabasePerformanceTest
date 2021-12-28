@@ -27,9 +27,10 @@ namespace Everbridge.DatabasePerformanceTest
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Everbridge.DatabasePerformanceTest", Version = "v1" });
             });
 
-            services.AddScoped<SqlRepository>();
-            services.AddScoped<MongoRepository>();
-            services.AddScoped<IDatabasePerformanceRepositoryFactory, DatabasePerformanceRepositoryFactory>();
+            services.AddTransient<SqlRepository>();
+            services.AddTransient<MongoRepository>();
+            services.AddTransient<ElasticsearchRepository>();
+            services.AddTransient<IDatabasePerformanceRepositoryFactory, DatabasePerformanceRepositoryFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

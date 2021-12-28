@@ -5,6 +5,7 @@
     <UserSecretsId>382f873f-7067-4ea1-ab49-314b4c3f9784</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Elasticsearch.Net" Version="7.16.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.4.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,6 +26,12 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="wwwroot\render.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Repositories\CreateDatabase.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

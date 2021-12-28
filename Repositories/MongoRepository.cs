@@ -14,7 +14,7 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
         {
             _logger = logger;
 
-            var connectionString = "mongodb://localhost:27017";
+            var connectionString = "mongodb://host.docker.internal:12000"; //"mongodb://localhost:27017";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Test");
 

@@ -1,4 +1,18 @@
 var mygrid;
+function clearResultsClick() {
+    console.log('Clear results clicked');
+    const response = fetch('DatabasePerformance/ClearAllTasks', {
+        method: 'post',
+        headers: {
+            "Content-type": "application/json"
+        },
+    }).then(response => {
+        if (!response.ok) {
+            throw response;
+        }
+        ;
+    });
+}
 function StartTaskClick() {
     console.log("StartTaskClick");
     const textAreaElement = document.getElementById('data');
@@ -14,7 +28,7 @@ function StartTaskClick() {
         Operation: operationSelectElement.value,
         threadCount: threadCountInputElement.value
     };
-    const response = fetch('DatabasePerformance', {
+    const response = fetch('DatabasePerformance/StartTask', {
         method: 'post',
         headers: {
             "Content-type": "application/json"
@@ -36,16 +50,16 @@ function renderGrid() {
     // @ts-ignore
     mygrid = new gridjs.Grid({
         columns: [{
-                id: 'taskIdentifier',
-                name: "Task",
-                width: '20%'
-            }, {
                 id: 'databaseProvider',
                 name: "Provider",
                 width: '10%'
             }, {
                 id: 'operation',
                 name: "Operation",
+                width: '10%'
+            }, {
+                id: 'status',
+                name: "Status",
                 width: '10%'
             }, {
                 id: 'iterationCount',
@@ -94,11 +108,9 @@ function GetTasks() {
         // console.log(data);
         // @ts-ignore
         // Update Datas
-        if (data.length > 0) {
-            mygrid.updateConfig({
-                data: data
-            }).forceRender();
-        }
+        mygrid.updateConfig({
+            data: data
+        }).forceRender();
         this.window.setTimeout(GetTasks, 1000);
     }).catch((error) => {
         // Handle the error

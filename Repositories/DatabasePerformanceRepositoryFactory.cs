@@ -4,11 +4,11 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
 {
     public class DatabasePerformanceRepositoryFactory : IDatabasePerformanceRepositoryFactory
     {
-        private readonly IServiceProvider serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         public DatabasePerformanceRepositoryFactory(IServiceProvider serviceProvider)
         {
-            this.serviceProvider = serviceProvider;
+            _serviceProvider = serviceProvider;
         }
 
         IDatabasePerformanceRepository IDatabasePerformanceRepositoryFactory.Create(DatabaseProvider databaseProvider)
@@ -16,10 +16,13 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
             switch (databaseProvider)
             {
                 case DatabaseProvider.sql:
-                    return (IDatabasePerformanceRepository)serviceProvider.GetService(typeof(SqlRepository));
+                    return (IDatabasePerformanceRepository)_serviceProvider.GetService(typeof(SqlRepository));
                     break;
                 case DatabaseProvider.mongo:
-                    return (IDatabasePerformanceRepository)serviceProvider.GetService(typeof(MongoRepository));
+                    return (IDatabasePerformanceRepository)_serviceProvider.GetService(typeof(MongoRepository));
+                    break;
+                case DatabaseProvider.elasticsearch:
+                    return (IDatabasePerformanceRepository)_serviceProvider.GetService(typeof(ElasticsearchRepository));
                     break;
                 default:
                     break;

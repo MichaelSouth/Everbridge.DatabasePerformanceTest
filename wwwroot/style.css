@@ -209,9 +209,14 @@ input:invalid {
     padding: 0.25rem 0rem;
     border-radius: 20px;
     background-color: #444;
-    max-width: 1200px;
+    max-width: 1800px;
 }
 
 #grid {
     padding: 0.25rem 2rem;
+}
+
+#clearResultsButton {
+    width: 200px;
+    display: inline;
 }
