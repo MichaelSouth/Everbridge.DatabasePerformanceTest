@@ -46,11 +46,21 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
                 sqlConnection.Open();
                 sqlConnection.ChangeDatabase("Test");
 
-                for (var i = 0; i < task.IterationCount; i++)
+                if (task.Operation == "write")
                 {
-                    var sqlCommand = new SqlCommand("INSERT INTO [dbo].[PerfTest] ([Data]) VALUES(@data)", sqlConnection) { CommandType = CommandType.Text };
-                    sqlCommand.Parameters.AddWithValue("@data", task.Data);
-                    sqlCommand.ExecuteNonQuery();
+                    for (var i = 0; i < task.IterationCount; i++)
+                    {
+                        var sqlCommand = new SqlCommand("INSERT INTO [dbo].[PerfTest] ([Data]) VALUES(@data)", sqlConnection) { CommandType = CommandType.Text };
+                        sqlCommand.Parameters.AddWithValue("@data", task.Data);
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                else if (task.Operation == "deleteall")
+                {
+                    task.IterationCount = 1;
+                    var sqlCommand = new SqlCommand("DELETE FROM [dbo].[PerfTest]", sqlConnection) { CommandType = CommandType.Text };
+                    var rowCount = sqlCommand.ExecuteNonQuery();
+                    task.Message = $"Deleted {rowCount} rows";
                 }
             }
         }

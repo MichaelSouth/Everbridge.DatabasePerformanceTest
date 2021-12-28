@@ -1,11 +1,13 @@
 ﻿read test
+Batching
 Pass db provider as enum.
 Electron app
 black grid https://gridjs.io/docs/examples/hello-world
 Animated background ?
 
-redis 
-elasticache
+More database providers
+- redis 
+
 
 
 

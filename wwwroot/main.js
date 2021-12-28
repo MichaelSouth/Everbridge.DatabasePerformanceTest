@@ -94,6 +94,10 @@ function renderGrid() {
                 formatter: (cell) => {
                     return `${cell}ms`;
                 }
+            }, {
+                id: 'message',
+                name: "Message",
+                width: '20%'
             }],
         sort: true,
         data: []

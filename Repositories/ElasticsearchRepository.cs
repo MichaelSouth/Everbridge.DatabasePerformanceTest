@@ -4,6 +4,7 @@ using System;
 
 namespace Everbridge.DatabasePerformanceTest.Repositories
 {
+    // https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/elasticsearch-net-getting-started.html
     public class ElasticsearchRepository : IDatabasePerformanceRepository
     {
         private readonly ILogger<ElasticsearchRepository> _logger;
@@ -15,17 +16,25 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
 
         public void ExecuteTask(DatabasePerformanceTask task)
         {
-            var settings = new ConnectionConfiguration(new Uri("http://host.docker.internal:9200"))
-                .RequestTimeout(TimeSpan.FromMinutes(2));
-
+            var settings = new ConnectionConfiguration(new Uri("http://host.docker.internal:9200")).RequestTimeout(TimeSpan.FromMinutes(2));
             var lowlevelClient = new ElasticLowLevelClient(settings);
-            
-            for (var i = 0; i < task.IterationCount; i++)
+                    
+            if (task.Operation == "write")
             {
-                var taskModel = new TaskModel { Data = task.Data };
-     
-                var indexResponse = lowlevelClient.Index<BytesResponse>("perftest", PostData.Serializable(taskModel));
-                byte[] responseBytes = indexResponse.Body;
+                for (var i = 0; i < task.IterationCount; i++)
+                {
+                    var taskModel = new TaskModel { Data = task.Data };
+
+                    var indexResponse = lowlevelClient.Index<BytesResponse>("perftest", PostData.Serializable(taskModel));
+                    byte[] responseBytes = indexResponse.Body;
+                }
+            }
+            else if (task.Operation == "deleteall")
+            {
+                task.IterationCount = 1;
+                dynamic result = lowlevelClient.DeleteByQuery<DynamicResponse>("perftest", @"{""query"" : { ""match_all"" : { }} }");
+                var rowCount = result.Body["total"];
+                task.Message = $"Deleted {rowCount} rows";
             }
         }
 

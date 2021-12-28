@@ -23,11 +23,20 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
 
         public void ExecuteTask(DatabasePerformanceTask task)
         {
-            for (var i =0; i < task.IterationCount; i++)
+            if (task.Operation == "write")
             {
-                var taskModel = new TaskModel { Data = task.Data };
-                _collectionPerfTest.InsertOne(taskModel);
-            }  
+                for (var i = 0; i < task.IterationCount; i++)
+                {
+                    var taskModel = new TaskModel { Data = task.Data };
+                    _collectionPerfTest.InsertOne(taskModel);
+                }
+            }
+            else if (task.Operation == "deleteall")
+            {
+                task.IterationCount = 1;
+                var result = _collectionPerfTest.DeleteMany("{}");
+                task.Message = $"Deleted {result.DeletedCount} rows";
+            }
         }
 
         public class TaskModel
