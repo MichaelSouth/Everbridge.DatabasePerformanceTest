@@ -37,6 +37,17 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
                 var result = _collectionPerfTest.DeleteMany("{}");
                 task.Message = $"Deleted {result.DeletedCount} rows";
             }
+            else if (task.Operation == "read")
+            {
+               var modelTasks = _collectionPerfTest.Find(x => true).Limit(task.IterationCount).ToList();
+
+               foreach(var modelTask in modelTasks)
+               {
+                   var tempTask = _collectionPerfTest.Find(_ => _.Id == modelTask.Id).Single();
+               }
+
+               task.Message = $"Read {modelTasks.Count} rows";
+            }
         }
 
         public class TaskModel

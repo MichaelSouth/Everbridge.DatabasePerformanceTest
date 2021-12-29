@@ -36,6 +36,13 @@ namespace Everbridge.DatabasePerformanceTest.Repositories
                 var rowCount = result.Body["total"];
                 task.Message = $"Deleted {rowCount} rows";
             }
+            else if (task.Operation == "read")
+            {
+            //    var rows = lowlevelClient.Search<BytesResponse>("perftest", @"""query"": { size=5}");
+            //    rows.res
+            //    var row = lowlevelClient.Get<BytesResponse>("perftest","3242")
+                //task.Message = $"Read {identifiers.Count} rows";
+            }
         }
 
         public class TaskModel
